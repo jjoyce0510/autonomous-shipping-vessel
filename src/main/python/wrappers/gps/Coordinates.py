@@ -2,10 +2,10 @@
 # Created by Will Markley on November 8, 2017
 class Coordinates:
 
-	def __init__(self):
-	   self.lat  = 0
-	   self.long = 0
-	
+	def __init__(self, lat, long):
+	   self.lat  = lat
+	   self.long = long
+
 	def getLat(self):
 		return self.lat
 	

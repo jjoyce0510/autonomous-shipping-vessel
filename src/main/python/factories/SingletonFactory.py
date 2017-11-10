@@ -2,10 +2,10 @@
 class SingletonFactory:
     instance = None
 
-    def getInstance(self):
+    def createInstance(self):
         if self.instance is None:
-            self.instance = self.createInstance()
+            self.instance = self.getInstance()
         return self.instance
 
-    def createInstance(self):
+    def getInstance(self):
         return None

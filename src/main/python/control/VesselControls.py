@@ -1,10 +1,11 @@
-from src.main.python.wrappers.servo.ServoController import ServoController
-from src.main.python.wrappers.motor.MotorController import MotorController
-
-# Singleton holding the controls of the vessel, always use GETINSTANCE
+# Singleton holding the controls of the vessel
 class VesselControls:
     servo = None
     motor = None
+
+    def __init__(self, motor, servo):
+        self.motor = motor
+        self.servo = servo
 
     def getCurrentVelocity(self):
         return self.motor.getVelocity()

@@ -6,8 +6,6 @@ class Trip:
     state = TripState.pending
     destinationCoordinates = None
 
-    def __init__(self):
-
     def setDestinationCoordinates(self, destinationCoordinates):
         self.destinationCoordinates = destinationCoordinates
 

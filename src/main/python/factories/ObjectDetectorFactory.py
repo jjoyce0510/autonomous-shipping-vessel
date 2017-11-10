@@ -4,5 +4,5 @@ from src.main.python.control.ObjectDetector import ObjectDetector
 from SingletonFactory import SingletonFactory
 
 class ObjectDetectorFactory(SingletonFactory):
-    def createInstance(self):
+    def getInstance(self):
         return ObjectDetector(GPS(), Lidar())
