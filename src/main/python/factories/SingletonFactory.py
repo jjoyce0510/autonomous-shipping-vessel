@@ -1,4 +1,5 @@
 
+# Only hold one instance of this for inner class to be a singleton.
 class SingletonFactory:
     instance = None
 

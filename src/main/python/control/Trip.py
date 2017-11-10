@@ -1,3 +1,4 @@
+from src.main.python.exceptions.TripException import TripException
 from TripState import TripState
 import time
 
@@ -29,14 +30,14 @@ class Trip:
             self.state = TripState.active
             self.startTime = time.clock()
         else:
-            raise ValueError("Destination coordinates are undefined.")
+            raise TripException("Destination coordinates are undefined.")
 
     def completeTrip(self):
         if self.state is TripState.active:
             self.state = TripState.complete
             self.duration = time.clock() - self.startTime
         else:
-            raise ValueError("The trip has not begun yet.")
+            raise TripException("The trip has not begun yet.")
 
 
     def failTrip(self):
@@ -44,7 +45,7 @@ class Trip:
             self.state = TripState.failed
             self.duration = time.clock() - self.startTime
         else:
-            raise ValueError("The trip has not begun yet")
+            raise TripException("The trip has not begun yet")
 
     def reset(self):
         startTime = None
