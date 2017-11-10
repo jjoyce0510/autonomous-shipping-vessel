@@ -6,13 +6,13 @@ TODO:
 
 ###########
 
-from Coordinate import Coordinate
+from Coordinates import Coordinates
 
 # Created by Will Markley on November 8, 2017
 class GPS:
 
 	def __init__(self):
-	   self.coord     = Coordinate()
+	   self.coord     = Coordinates()
 	
 	def getCoord(self):
 		self.coord.setLat(gps.lat)

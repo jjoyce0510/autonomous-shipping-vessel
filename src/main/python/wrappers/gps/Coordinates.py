@@ -1,6 +1,6 @@
 
 # Created by Will Markley on November 8, 2017
-class Coordinate:
+class Coordinates:
 
 	def __init__(self):
 	   self.lat  = 0
@@ -17,4 +17,9 @@ class Coordinate:
 	
 	def setLong(self, longitude):
 		self.long = longitude
+
+	def calculateDistanceTo(self, coordinates):
+		# Calculate distance to another set of coordinates
+		return 0
+
 
