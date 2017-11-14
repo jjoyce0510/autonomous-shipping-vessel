@@ -5,7 +5,8 @@ from exceptions.BluetoothException import BluetoothException
 from factories.VesselDriverFactory import VesselDriverFactory
 from control.Trip import Trip
 from wrappers.gps.Coordinates import Coordinates
-from BluetoothManager import BluetoothManager
+from BluetoothManagerMock import BluetoothManagerMock
+from wrappers.gps.GPS import GPS
 
 class Bootloader:
     driver = VesselDriverFactory.createInstance()
@@ -18,7 +19,6 @@ class Bootloader:
             sys.exit(0)
 
         self.launchDriver()
-
 
     def validate(self):
         self.validateGPS()
@@ -44,7 +44,8 @@ class Bootloader:
         pass
 
     def launchDriver(self):
-        btManager = BluetoothManager()
+        btManager = BluetoothManagerMock()
+        data = ""
         try:
             btManager.connect()
             data = btManager.getData()
@@ -54,7 +55,7 @@ class Bootloader:
         coordinates = self.parseCoordinates(data)
 
         if coordinates:
-            trip = Trip()
+            trip = Trip(GPS())
             trip.setDestinationCoordinates(coordinates)
             self.driver.setTrip(trip)
             self.driver.drive()
@@ -64,4 +65,4 @@ class Bootloader:
         if not data:
             return None
         else:
-            return Coordinates(data.getKey("lat"), data.getKey("long"))
+            return Coordinates(data.split()[0], data.split()[1])

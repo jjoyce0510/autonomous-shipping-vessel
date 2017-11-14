@@ -1,10 +1,10 @@
 from src.main.python.factories.ObjectDetectorFactory import ObjectDetectorFactory
 class ObjectDetector:
-    gps = None
+    camera = None
     lidar = None
 
-    def __init__(self, gps, lidar):
-        self.gps = gps
+    def __init__(self, camera, lidar):
+        self.camera = camera
         self.lidar = lidar
 
 

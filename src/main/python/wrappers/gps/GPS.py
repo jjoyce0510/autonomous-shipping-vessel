@@ -12,7 +12,7 @@ from Coordinates import Coordinates
 class GPS:
 
 	def __init__(self):
-	   self.coord     = Coordinates()
+	   self.coord    = Coordinates()
 	
 	def getCoord(self):
 		self.coord.setLat(gps.lat)

@@ -6,6 +6,10 @@ class Trip:
     startTime = None
     state = TripState.pending
     destinationCoordinates = None
+    gps = None
+
+    def __init__(self, gps):
+        self.gps = gps
 
     def setDestinationCoordinates(self, destinationCoordinates):
         self.destinationCoordinates = destinationCoordinates
@@ -15,6 +19,7 @@ class Trip:
 
     def calculateAngleToDestination(self, currentCoordinates, currentOrientation):
         # Calculate the relative angle to get to the coordinates - determine if we need to go right or left
+        pass
 
     def getDuration(self):
         if self.startTime is not None:
