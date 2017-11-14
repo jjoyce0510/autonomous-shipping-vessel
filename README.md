@@ -1,2 +1,7 @@
-# auto-shipping-vessel [![Build Status](https://travis-ci.org/willmarkley/auto-shipping-vessel.svg?branch=master)](https://travis-ci.org/willmarkley/auto-shipping-vessel)  
+# auto-shipping-vessel
 CSE 40522 Capstone Design
+
+
+### Resources
+
+* [GPS](https://learn.adafruit.com/adafruit-ultimate-gps-on-the-raspberry-pi?view=all) 
