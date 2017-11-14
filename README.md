@@ -5,3 +5,4 @@ CSE 40522 Capstone Design
 ### Resources
 
 * [GPS](https://learn.adafruit.com/adafruit-ultimate-gps-on-the-raspberry-pi?view=all) 
+* [GPSD](http://www.catb.org/gpsd//gpsd_json.html)  
