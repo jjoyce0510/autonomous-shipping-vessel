@@ -15,11 +15,25 @@ class GPS:
 	def getCoord(self):
 		for report in self.gpsd:
 			if report['class'] == 'TPV':
-				self.coord.setLat(report['lat'])
-				self.coord.setLon(report['lon'])
+				if hasattr(report, 'lat'):
+					self.coord.setLat(report['lat'])
+				if hasattr(report, 'lon'):
+					self.coord.setLon(report['lon'])
 				return self.coord
 
 	def getHeading(self):
 		for report in self.gpsd:
 			if report['class'] == 'TPV':
-				return report['track']
+				if hasattr(report, 'track'):
+					return report.track
+				else:
+					return ""
+
+
+	def getSpeed(self):
+		for report in self.gpsd:
+			if report['class'] == 'TPV':
+				if hasattr(report, 'speed'):
+					return report.speed * gps.MPS_TO_KPH
+				else:
+					return ""
