@@ -1,0 +1,3 @@
+
+class TestMotor:
+    pass
