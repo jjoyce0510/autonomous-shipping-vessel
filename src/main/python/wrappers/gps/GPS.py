@@ -22,4 +22,4 @@ class GPS:
 	def getHeading(self):
 		for report in gpsd:
 			if report['class'] == 'TPV':
-				return report['track'])
+				return report['track']
