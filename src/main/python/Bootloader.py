@@ -7,6 +7,7 @@ from control.Trip import Trip
 from wrappers.gps.Coordinates import Coordinates
 from BluetoothManagerMock import BluetoothManagerMock
 from wrappers.gps.GPS import GPS
+from src.test.python.TestGPS import TestGPS
 
 class Bootloader:
     driver = VesselDriverFactory.createInstance()
@@ -29,7 +30,7 @@ class Bootloader:
 
     #TODO: Validate hardware
     def validateGPS(self):
-        pass
+        TestGPS()
 
     def validateLidar(self):
         pass
