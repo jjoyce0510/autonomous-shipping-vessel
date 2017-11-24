@@ -1,4 +1,3 @@
-
 class TripState():
     pending = 1
     active = 2

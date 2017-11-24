@@ -1,3 +1,6 @@
+import sys
+import os.path
+
 from src.main.python.wrappers.gps.GPS import GPS
 from src.main.python.exceptions.HardwareException import HardwareException
 
