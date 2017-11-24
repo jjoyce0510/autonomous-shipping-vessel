@@ -14,14 +14,14 @@ from src.test.python.TestMotor import TestMotor
 from src.test.python.TestLidar import TestLidar
 from src.test.python.TestCamera import TestCamera
 
-class Bootloader:
+class Bootloader():
     driver = VesselDriverFactory().createInstance()
 
     def __init__(self):
         try:
             self.validate()
         except HardwareException, e:
-            print str(e)
+            print str(e) + "Failed to validate hardware"
             sys.stderr.write('Failed to validate on-board hardware '+ str(e))
             sys.exit(0)
 
@@ -50,6 +50,7 @@ class Bootloader:
         TestServo()
 
     def launchDriver(self):
+	print "Launching driver"
         btManager = BluetoothManagerMock()
         data = ""
         try:
@@ -57,7 +58,8 @@ class Bootloader:
             data = btManager.getData()
         except BluetoothException, e: #TODO: Implement this exception
             sys.stderr.write("Failed to establish bluetooth connection" + str(e))
-
+	
+	print "Launching driver"
         coordinates = self.parseCoordinates(data)
 
         if coordinates:
