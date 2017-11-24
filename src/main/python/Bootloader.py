@@ -14,14 +14,14 @@ from src.test.python.TestMotor import TestMotor
 from src.test.python.TestLidar import TestLidar
 from src.test.python.TestCamera import TestCamera
 
-class Bootloader:
+class Bootloader():
     driver = VesselDriverFactory().createInstance()
 
     def __init__(self):
         try:
             self.validate()
         except HardwareException, e:
-            print str(e)
+            print str(e) + "Failed to validate hardware"
             sys.stderr.write('Failed to validate on-board hardware '+ str(e))
             sys.exit(0)
 
