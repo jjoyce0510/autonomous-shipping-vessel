@@ -1,4 +1,5 @@
 from ..TripState import TripState
+import time
 
 # Singleton class to represent the driver, who is able to check the sensors and make decisions. USE GETINSTANCE
 class VesselDriver:
@@ -37,6 +38,8 @@ class VesselDriver:
             else:
                 # Move in direction toward completion of trip.
                 pass
+
+            time.sleep(0.01)
 
     def avoidObject(self, object):
         print "Hi"
