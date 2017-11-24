@@ -1,4 +1,3 @@
-from src.main.python.factories.ObjectDetectorFactory import ObjectDetectorFactory
 class ObjectDetector:
     camera = None
     lidar = None

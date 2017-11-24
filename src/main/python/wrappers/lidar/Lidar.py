@@ -1,5 +1,6 @@
 import smbus
 import time
+from src.main.python.exceptions.HardwareException import HardwareException
 
 # Created by John Joyce on November 7
 # Returns distance to closest object in cm
@@ -21,6 +22,7 @@ class Lidar:
             print "Connected to LiDAR successfully."
         else:
             print "Unable to connect to LiDAR on bus " + self.DEFAULT_BUS
+            raise HardwareException()
 
     def connect(self, bus):
         try:

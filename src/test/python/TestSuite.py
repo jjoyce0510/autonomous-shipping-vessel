@@ -4,4 +4,6 @@ from TestLidar import TestLidar
 from TestMotor import TestMotor
 from TestServo import TestServo
 
+TestMotor()
+TestServo()
 TestGPS()
