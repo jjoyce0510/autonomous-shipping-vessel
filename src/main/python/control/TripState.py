@@ -1,6 +1,4 @@
-import enum
-
-class TripState(enum.Enum):
+class TripState():
     pending = 1
     active = 2
     complete = 3

@@ -1,12 +1,8 @@
 import os
-from wrappers.servo.ServoController import ServoController
-from wrappers.motor.MotorController import MotorController
+import sys
+sys.path.append('/home/pi/autonomous-shipping-vessel')
 
-# Tests the servo controller
-servo = ServoController()
-motor = MotorController()
+from Bootloader import Bootloader
 
-while True:
-    inp = float(raw_input())
-    servo.setAngle(inp)
-    motor.setVelocity(0.0)
+
+Bootloader()

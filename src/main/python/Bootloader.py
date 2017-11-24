@@ -10,7 +10,7 @@ from wrappers.gps.GPS import GPS
 from src.test.python.TestGPS import TestGPS
 
 class Bootloader:
-    driver = VesselDriverFactory.createInstance()
+    driver = VesselDriverFactory().createInstance()
 
     def __init__(self):
         try:
