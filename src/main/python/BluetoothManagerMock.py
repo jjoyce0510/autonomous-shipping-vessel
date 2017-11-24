@@ -9,5 +9,5 @@ class BluetoothManagerMock(BluetoothManager):
 
 
     def connect(self):
-        self.data = "40.0, -79.0" #Hardcode the coordinates here.
+        self.data = "40.0 -79.0" #Hardcode the coordinates here.
         self.hasData = True

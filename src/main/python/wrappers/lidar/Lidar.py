@@ -4,7 +4,7 @@ from src.main.python.exceptions.HardwareException import HardwareException
 
 # Created by John Joyce on November 7
 # Returns distance to closest object in cm
-class Lidar:
+class Lidar():
     DEFAULT_BUS = 1
 
     def __init__(self):
