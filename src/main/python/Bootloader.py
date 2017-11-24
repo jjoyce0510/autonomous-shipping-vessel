@@ -21,6 +21,7 @@ class Bootloader:
         try:
             self.validate()
         except HardwareException, e:
+            print str(e)
             sys.stderr.write('Failed to validate on-board hardware '+ str(e))
             sys.exit(0)
 
