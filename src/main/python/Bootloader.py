@@ -49,6 +49,7 @@ class Bootloader:
         TestServo()
 
     def launchDriver(self):
+	print "Launching driver"
         btManager = BluetoothManagerMock()
         data = ""
         try:
@@ -56,7 +57,8 @@ class Bootloader:
             data = btManager.getData()
         except BluetoothException, e: #TODO: Implement this exception
             sys.stderr.write("Failed to establish bluetooth connection" + str(e))
-
+	
+	print "Launching driver"
         coordinates = self.parseCoordinates(data)
 
         if coordinates:
