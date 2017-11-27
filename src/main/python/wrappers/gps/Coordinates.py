@@ -46,12 +46,12 @@ class Coordinates:
 
 	def calculateRotation(self, current, goal):
 		# Calculate rotation in degrees from current angle to desired angle
-        #     (+) is clockwise rotation
-        #     (-) is counter-clockwise rotation
-        rotation = goal - current
-        # make rotation in shortest direction
-        if rotation > 180:
-        	rotation = rotation - 360
-        if rotation < -180:
-        	rotation = 360 - rotation
-        return rotation
+		#     (+) is clockwise rotation
+		#     (-) is counter-clockwise rotation
+		rotation = goal - current
+		# make rotation in shortest direction
+		if rotation > 180:
+			rotation = rotation - 360
+		elif rotation < -180:
+			rotation = 360 - rotation
+		return rotation
