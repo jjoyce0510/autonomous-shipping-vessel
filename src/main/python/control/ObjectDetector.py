@@ -20,8 +20,11 @@ class ObjectDetector:
     		# grab the frame from the camera
     		frame = self.camera.read()
 
+    		# blur frame using Gaussian blur
+    		blurred_frame = cv2.GaussianBlur(frame, (11, 11), 0)
+
     		# conver the BGR image to HSV space
-    		hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    		hsv = cv2.cvtColor(blurred_frame, cv2.COLOR_BGR2HSV)
 
     		# construct a mask for the color green, perform a series of dilations and erosions
     		# to remove any small blobs left in the image
