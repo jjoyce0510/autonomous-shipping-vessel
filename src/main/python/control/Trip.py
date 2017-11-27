@@ -19,7 +19,18 @@ class Trip:
 
     def calculateAngleToDestination(self, currentCoordinates, currentOrientation):
         # Calculate the relative angle to get to the coordinates - determine if we need to go right or left
-        pass
+        # Direction that we need to travel
+        angleToDestination = self.currentCoordinates.calculateAngleTo(destinationCoordinates)
+        # Adjustment that needs to be made
+        #     (+) is clockwise rotation
+        #     (-) is counter-clockwise rotation
+        rotation = angleToDestination - currentOrientation
+        # make rotation in shortest direction
+        if rotation > 180:
+        	rotation = rotation - 360
+        if rotation < -180:
+        	rotation = 360 - rotation
+        return rotation
 
     def getDuration(self):
         if self.startTime is not None:
