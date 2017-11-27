@@ -29,11 +29,11 @@ class Coordinates:
 		Longitude: East (+), West (-) from GPS
 		Latitude:  North (+), South (-) from GPS
 		
-				 E
+		         E
 			     |
 			S <--+--> N
-				 |
-				 W
+		         |
+		         W
 				 
 		Y-axis is longitude
 		X-axis is latitude
