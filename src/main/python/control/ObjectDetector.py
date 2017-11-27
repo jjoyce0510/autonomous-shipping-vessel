@@ -1,6 +1,6 @@
 from src.main.python.factories.ObjectDetectorFactory import ObjectDetectorFactory
-from src.main.python.wrappers.CameraStream import CameraStream
-from src.main.python.wrappers.Camera import CameraController
+from src.main.python.wrappers.camera.CameraStream import CameraStream
+from src.main.python.wrappers.camera.Camera import CameraController
 
 class ObjectDetector:
     camera = None
@@ -14,7 +14,7 @@ class ObjectDetector:
         self.lidar = lidar
 
 
-    def detectObject(self):
+    def detectObjectAndDisplay(self):
 
     	while True:
     		# grab the frame from the camera
@@ -47,8 +47,11 @@ class ObjectDetector:
     				cv2.circle(frame, (int(x), int(y)), int(radius), (0, 255, 255), 2)
     				cv2.circle(frame, center, 5, (0, 0, 255), -1)
 
+    		# display frames with circles around green ball
     		cv2.imshow("Frame", frame)
-    		key = cv2. waitkey(0) & 0xFF
+    		# display mask
+    		cvs.imshow("Mask", mask)
+    		key = cv2.waitkey(0) & 0xFF
 
     		if key == ord("q"):
     			break
