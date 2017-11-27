@@ -30,8 +30,8 @@ class Coordinates:
 		Latitude:  North (+), South (-) from GPS
 		
 		         E
-			     |
-			S <--+--> N
+		         |
+		    S <--+--> N
 		         |
 		         W
 				 
