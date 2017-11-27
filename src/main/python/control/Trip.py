@@ -17,21 +17,17 @@ class Trip:
     def calculateDistanceToDestination(self, currentCoordinates):
         return self.destinationCoordinates.calculateDistanceTo(currentCoordinates)
 
-    def calculateAngleToDestination(self, currentCoordinates, currentOrientation):
-        # Calculate the relative angle to get to the coordinates - determine if we need to go right or left
-        # Direction that we need to travel
-        angleToDestination = self.currentCoordinates.calculateAngleTo(destinationCoordinates)
-        # Adjustment that needs to be made
-        #     (+) is clockwise rotation
+    def calculateAngleToDestination(self, currentCoordinates):
+        # Calculate the relative angle to get to the destination coordinates (Direction that we need to travel)
+		return self.currentCoordinates.calculateAngleTo(destinationCoordinates)
+        
+    def calculateRotationToDestination(self, currentCoordinates, currentOrientation):
+    	# Calculate rotation in degrees of boat from current orientation to desired orientation
+    	#     (+) is clockwise rotation
         #     (-) is counter-clockwise rotation
-        rotation = angleToDestination - currentOrientation
-        # make rotation in shortest direction
-        if rotation > 180:
-        	rotation = rotation - 360
-        if rotation < -180:
-        	rotation = 360 - rotation
-        return rotation
-
+    	angleToDestination = self.currentCoordinates.calculateAngleTo(destinationCoordinates)
+    	return self.destinationCoordinates.calculateRotation(currentOrientation, angleToDestination)
+        
     def getDuration(self):
         if self.startTime is not None:
             return time.clock() - self.startTime
