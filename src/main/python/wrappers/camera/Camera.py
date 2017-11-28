@@ -24,7 +24,7 @@ class CameraController:
 
 	def update(self):
 		# loop until thread is stopped
-		for f in self.camera.capture_continuous(self.rawCapture, format="brg", use_video_port=True):
+		for f in self.camera.capture_continuous(self.rawCapture, format="bgr", use_video_port=True):
 			self.frame = f.array
 
 			cv2.imshow("frame", frame)
