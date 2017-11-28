@@ -1,4 +1,3 @@
-from src.main.python.wrappers.camera.Camera import CameraController
 from ObjectDetector import ObjectDetector
 import time
 
