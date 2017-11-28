@@ -27,7 +27,7 @@ class CameraController:
 		for f in self.camera.capture_continuous(self.rawCapture, format="bgr", use_video_port=True):
 			self.frame = f.array
 
-			cv2.imshow("frame", frame)
+			cv2.imshow("frame", self.frame)
 
 			key = cv2.waitKey(1) & 0xFF
 
