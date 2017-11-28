@@ -1,8 +1,5 @@
-from src.main.python.wrappers.camera.CameraStream import CameraStream
-from src.main.python.wrappers.camera.Camera import CameraController
 import cv2
 class ObjectDetector:
-    camera = None
     lidar = None
 
     Lower = (7, 86, 6)
@@ -12,16 +9,12 @@ class ObjectDetector:
     ball_y = None
     ball_radius = None
 
-    def __init__(self, camera, lidar=None):
+    def __init__(self, lidar=None):
         self.camera = camera
         self.lidar = lidar
 
 
-    def detectObject(self):
-
-    	while True:
-    		# grab the frame from the camera
-    		frame = self.camera.read()
+    def update(self, frame):
 
     		# blur frame using Gaussian blur
     		blurred_frame = cv2.GaussianBlur(frame, (11, 11), 0)
