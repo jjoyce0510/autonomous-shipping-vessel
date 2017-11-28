@@ -1,4 +1,3 @@
-from src.main.python.factories.ObjectDetectorFactory import ObjectDetectorFactory
 from src.main.python.wrappers.camera.CameraStream import CameraStream
 from src.main.python.wrappers.camera.Camera import CameraController
 
