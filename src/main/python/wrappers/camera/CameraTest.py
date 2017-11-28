@@ -1,4 +1,4 @@
-from CameraStream import CameraStream
+from Camera import CameraController
 import time
 
 
