@@ -2,11 +2,7 @@ from CameraStream import CameraStream
 import time
 
 
-myCameraStream = CameraStream()
+myCamera = CameraController()
 time.sleep(1)
 
-myCameraStream.start()
-
-myCameraStream.display()
-
-myCameraStream.stop()
+myCamera.start()
