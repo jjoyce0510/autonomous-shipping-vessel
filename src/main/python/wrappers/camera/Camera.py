@@ -29,7 +29,6 @@ class CameraController:
 	def update(self):
 		# loop until thread is stopped
 		for f in self.camera.capture_continuous(self.rawCapture, format="bgr", use_video_port=True):
-			self.camera.start_preview()
 			self.frame = f.array
 
 			#self.frame = self.detector.update(f.array)
