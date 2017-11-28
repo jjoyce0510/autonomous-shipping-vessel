@@ -1,6 +1,7 @@
 from src.main.python.wrappers.camera.CameraStream import CameraStream
 from src.main.python.wrappers.camera.Camera import CameraController
 import cv2
+
 class ObjectDetector:
     camera = None
     lidar = None
@@ -52,9 +53,6 @@ class ObjectDetector:
     			self.ball_radius = None
 
 
-
-
-
     def detectObjectAndDisplay(self):
 
     	while True:
@@ -93,8 +91,7 @@ class ObjectDetector:
 
     		# display frames with circles around green ball
     		cv2.imshow("Frame", frame)
-    		# display mask
-    		cvs.imshow("Mask", mask)
+    		
     		key = cv2.waitkey(0) & 0xFF
 
     		if key == ord("q"):
