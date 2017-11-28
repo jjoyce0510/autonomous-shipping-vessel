@@ -65,7 +65,7 @@ class ObjectDetector:
 
 		# only proceed if there are more than one contours
 		if len(contours)>0:
-			# find the largest contour in the mask, then use it to compute the minimum eclosing circle and centroid
+			# find the largest contour in the mask, then use it to compute the minimum enclosing circle and centroid
 			c = max(contours, key=cv2.contourArea)
 			((self.ball_x, self.ball_y), self.ball_radius) = cv2.minEnclosingCircle(c)
 			M = cv2.moments(c)
