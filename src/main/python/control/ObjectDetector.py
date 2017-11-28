@@ -77,12 +77,8 @@ class ObjectDetector:
 				cv2.circle(frame, (int(self.ball_x), int(self.ball_y)), int(self.ball_radius), (0, 255, 255), 2)
 				cv2.circle(frame, center, 5, (0, 0, 255), -1)
 
-		# display frames with circles around green ball
-		cv2.imshow("Frame", frame)
+		return frame
 
-		key = cv2.waitkey(0) & 0xFF
 
-		if key == ord("q"):
-			break
 
 
