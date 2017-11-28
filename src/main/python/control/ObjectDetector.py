@@ -1,6 +1,6 @@
 from src.main.python.wrappers.camera.CameraStream import CameraStream
 from src.main.python.wrappers.camera.Camera import CameraController
-
+import cv2
 class ObjectDetector:
     camera = None
     lidar = None
