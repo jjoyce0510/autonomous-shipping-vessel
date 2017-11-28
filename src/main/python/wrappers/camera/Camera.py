@@ -32,7 +32,6 @@ class CameraController:
 			self.camera.start_preview()
 			self.frame = f.array
 
-			print "Updated"
 			#self.frame = self.detector.update(f.array)
 			cv2.imshow("frame", self.frame)
 
