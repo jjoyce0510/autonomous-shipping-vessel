@@ -36,7 +36,7 @@ class CameraController:
 		# loop until thread is stopped
 		for f in self.camera.capture_continuous(self.rawCapture, format="bgr", use_video_port=True):
 			self.frame = f.array
-			self.detector.update(f.array)
+			self.frame = self.detector.update(f.array)
 
 			cv2.imshow("frame", self.frame)
 
