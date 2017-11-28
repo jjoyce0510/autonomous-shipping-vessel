@@ -7,7 +7,7 @@ import cv2
 ## Created by Anthony Daegele, Nov. 7 2017
 class CameraController:
 
-	def __init__(self, resolution=(960,720), framerate=32):
+	def __init__(self, resolution=(320,240), framerate=32):
 		self.camera = PiCamera()
 		self.camera.resolution = resolution
 		self.camera.framerate = framerate
