@@ -1,5 +1,6 @@
 from picamera.array import PiRGBArray
 from picamera import PiCamera
+from threading import Thread
 import time
 import cv2
 
@@ -19,7 +20,7 @@ class CameraController:
 
 	def start(self):
 		# start the thread and read frames from the video stream
-		self.update()
+		Thread(target=self.update, args=()).start()
 
 	def update(self):
 		# loop until thread is stopped
