@@ -19,7 +19,8 @@ class Bootloader():
 
     def __init__(self):
         try:
-            self.validate()
+            #self.validate()
+            pass
         except HardwareException, e:
             print str(e) + "Failed to validate hardware"
             sys.stderr.write('Failed to validate on-board hardware '+ str(e))
@@ -59,9 +60,8 @@ class Bootloader():
         except BluetoothException, e: #TODO: Implement this exception
             sys.stderr.write("Failed to establish bluetooth connection" + str(e))
 	
-	print "Launching driver"
         coordinates = self.parseCoordinates(data)
-
+ 
         if coordinates:
             trip = Trip(GPS())
             trip.setDestinationCoordinates(coordinates)
