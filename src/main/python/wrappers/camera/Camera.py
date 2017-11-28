@@ -29,14 +29,8 @@ class CameraController:
 
 			cv2.imshow("frame", self.frame)
 
-			key = cv2.waitKey(1) & 0xFF
-
 			self.rawCapture.truncate(0)
-
-			if key == ord("q"):
-				self.stopped = True
 				
-
 			if self.stopped:
 				self.stream.close()
 				self.rawCapture.close()
