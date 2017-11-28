@@ -6,8 +6,8 @@ class ObjectDetector:
     camera = None
     lidar = None
 
-    greenLower = (29, 86, 6)
-    greenUpper = (64, 255, 255)
+    Lower = (29, 86, 6)
+    Upper = (64, 255, 255)
 
     ball_x = None
     ball_y = None
@@ -32,7 +32,7 @@ class ObjectDetector:
 
     		# construct a mask for the color green, perform a series of dilations and erosions
     		# to remove any small blobs left in the image
-    		mask = cv2.inRange(hsv, self.greenLower, self.greenUpper)
+    		mask = cv2.inRange(hsv, self.Lower, self.Upper)
     		mask = cv2.erode(mask, None, iterations=2)
     		mask = cv2.dilate(mask, None, iterations=2)
 
@@ -70,7 +70,7 @@ class ObjectDetector:
 
     		# construct a mask for the color green, perform a series of dilations and erosions
     		# to remove any small blobs left in the image
-    		mask = cv2.inRange(hsv, self.greenLower, self.greenUpper)
+    		mask = cv2.inRange(hsv, self.Lower, self.Upper)
     		mask = cv2.erode(mask, None, iterations=2)
     		mask = cv2.dilate(mask, None, iterations=2)
 
