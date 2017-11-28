@@ -1,13 +1,13 @@
 from picamera.array import PiRGBArray
 from picamera import PiCamera
-from threading import Thread
+from src.main.python.control.ObjectDetector import ObjectDetector
 import time
 import cv2
 
 ## Created by Anthony Daegele, Nov. 7 2017
 class CameraController:
 
-	def __init__(self, resolution=(320,240), framerate=32):
+	def __init__(self, resolution=(320,240), framerate=32, objectDetector=None):
 		self.camera = PiCamera()
 		self.camera.resolution = resolution
 		self.camera.framerate = framerate
@@ -17,15 +17,26 @@ class CameraController:
 
 		self.frame = None
 		self.stopped = False
+		self.detector = objectDetector
+
+
 
 	def start(self):
 		# start the thread and read frames from the video stream
+<<<<<<< HEAD
 		Thread(target=self.update, args=()).start()
+=======
+
+		#Thread(target=self.update, args=()).start()
+		self.update()
+>>>>>>> a2d573d4c866c5a8c4d08173f78c27be6aef66bc
+
 
 	def update(self):
 		# loop until thread is stopped
 		for f in self.camera.capture_continuous(self.rawCapture, format="bgr", use_video_port=True):
 			self.frame = f.array
+			self.detector.update(f.array)
 
 			cv2.imshow("frame", self.frame)
 

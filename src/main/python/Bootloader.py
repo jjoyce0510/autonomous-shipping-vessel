@@ -51,7 +51,7 @@ class Bootloader():
         TestServo()
 
     def launchDriver(self):
-	print "Launching driver"
+        print "Launching driver"
         btManager = BluetoothManagerMock()
         data = ""
         try:
