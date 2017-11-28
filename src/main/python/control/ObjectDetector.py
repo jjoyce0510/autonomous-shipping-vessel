@@ -85,5 +85,4 @@ class ObjectDetector:
 		if key == ord("q"):
 			break
 
-	cv2.destroyAllWindows()
 
