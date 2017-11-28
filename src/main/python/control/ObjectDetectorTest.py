@@ -5,7 +5,7 @@ import time
 myCamera = CameraController()
 time.sleep(1)
 
-myCamera,start()
+myCamera.start()
 time.sleep(1)
 
 myObjectDetector = ObjectDetector(myCamera, None)
