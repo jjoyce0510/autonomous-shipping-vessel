@@ -14,7 +14,6 @@ class CameraController:
 		self.rawCapture = PiRGBArray(self.camera, resolution)
 		# time for camera to warm up
 		time.sleep(0.1)
-		self.stream = self.camera.capture_continuous(self.rawCapture, format="brg", use_video_port=True)
 
 		self.frame = None
 		self.stopped = False
@@ -25,9 +24,18 @@ class CameraController:
 
 	def update(self):
 		# loop until thread is stopped
-		for f in self.stream:
+		for f in self.camera.capture_continuous(self.rawCapture, format="brg", use_video_port=True):
 			self.frame = f.array
+
+			cv2.imshow("frame", frame)
+
+			key = cv2.waitKey(1) & 0xFF
+
 			self.rawCapture.truncate(0)
+
+			if key == ord("q"):
+				self.stopped = True
+				
 
 			if self.stopped:
 				self.stream.close()
