@@ -6,8 +6,8 @@ class ObjectDetector:
     camera = None
     lidar = None
 
-    Lower = (29, 86, 6)
-    Upper = (64, 255, 255)
+    Lower = (7, 86, 6)
+    Upper = (20, 255, 255)
 
     ball_x = None
     ball_y = None
