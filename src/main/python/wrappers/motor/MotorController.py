@@ -6,7 +6,7 @@ import pigpio
 class MotorController:
     MOTOR_PIN = 4
     MIN_PULSE_VALUE = 800
-    MAX_PULSE_VALUE = 2500
+    MAX_PULSE_VALUE = 2000
     MIN_VELOCITY = 0
     MAX_VELOCITY = 100.0
 
