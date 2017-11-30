@@ -23,7 +23,6 @@ class CameraController:
 
 	def start(self):
 		# start the thread and read frames from the video stream
-
 		#Thread(target=self.update, args=()).start()
 		self.update()
 
