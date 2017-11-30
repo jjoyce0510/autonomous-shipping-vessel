@@ -15,6 +15,7 @@ class MotorController:
         self.pi.set_servo_pulsewidth(self.MOTOR_PIN, 0)
         self.currentVelocity = self.MIN_VELOCITY
         self.currentPWM = 0.0
+        self.initializeMotor()
 
     def initializeMotor(self):
         self.pi.set_servo_pulsewidth(self.MOTOR_PIN, self.MIN_PULSE_VALUE)
