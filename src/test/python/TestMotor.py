@@ -12,7 +12,7 @@ class TestMotor:
         self.motorController.setVelocity(0.0)
         print self.motorController.getVelocity()
         time.sleep(4.0)
-        self.motorController.setVelocity(10.0)
+        self.motorController.setVelocity(15.0)
         print self.motorController.getVelocity()
         time.sleep(15.0)
 
