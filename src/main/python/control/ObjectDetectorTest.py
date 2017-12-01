@@ -6,3 +6,5 @@ myCamera = CameraController(objectDetector=ObjectDetector(None))
 
 time.sleep(1)
 myCamera.start()
+time.sleep(10)
+myCamera.stop()
