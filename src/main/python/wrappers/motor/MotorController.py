@@ -13,11 +13,16 @@ class MotorController:
 
     def __init__(self):
         self.pi = pigpio.pi()
-        self.pi.set_servo_pulsewidth(self.MOTOR_PIN, 0)
-        self.currentVelocity = self.MIN_VELOCITY
-        self.currentPWM = self.MIN_PULSE_VALUE
+        self.isActive = False
+
+    def start(self):
+        self.setVelocity(0.0)
         self.isActive = True
-        self.updateThread = Thread(target=self.sendPWM).start()
+        Thread(target=self.sendPWM).start()
+
+    def stop(self):
+        self.setVelocity(0.0)
+        self.isActive = False
 
     def setVelocity(self, velocity):
         pulseWidth = self.translateVelocityToPulseWidth(velocity) + self.MIN_PULSE_VALUE
@@ -44,11 +49,6 @@ class MotorController:
             self.currentVelocity = self.currentVelocity - decrement
             self.currentPWM = pulseWidth
             self.pi.set_servo_pulsewidth(self.MOTOR_PIN, pulseWidth)
-
-    def stop(self):
-        self.currentPWM = self.MIN_PULSE_VALUE
-        self.currentVelocity = self.MIN_VELOCITY
-        self.isActive = False
 
     def translateVelocityToPulseWidth(self, velocity):
         pwmRange = self.MAX_PULSE_VALUE - self.MIN_PULSE_VALUE
