@@ -43,7 +43,6 @@ class CameraController:
 			################################################	
 
 			if not self.isActive:
-				self.stream.close()
 				self.rawCapture.close()
 				self.camera.close()
 				return
