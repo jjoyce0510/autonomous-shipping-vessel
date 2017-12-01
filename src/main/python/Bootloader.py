@@ -15,23 +15,23 @@ from src.test.python.TestLidar import TestLidar
 from src.test.python.TestCamera import TestCamera
 
 class Bootloader():
-    driver = VesselDriverFactory().createInstance()
+    #driver = VesselDriverFactory().createInstance()
 
     def __init__(self):
         try:
-            #self.validate()
+            self.validate()
             pass
         except HardwareException, e:
             print str(e) + "Failed to validate hardware"
-            sys.stderr.write('Failed to validate on-board hardware '+ str(e))
             sys.exit(0)
 
-        self.launchDriver()
+        #self.launchDriver()
 
     def validate(self):
+	print "Validating..."
         self.validateGPS()
         self.validateLidar()
-        self.validateCamera()
+        #self.validateCamera()
         self.validateMotor()
         self.validateServo()
 

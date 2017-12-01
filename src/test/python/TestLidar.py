@@ -6,5 +6,6 @@ class TestLidar:
 
     def __init__(self):
         dist = self.lidar.getDistance()
+	print "Distance: " + str(dist)
         if dist <= 0.0:
             raise HardwareException
