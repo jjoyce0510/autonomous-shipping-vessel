@@ -6,28 +6,14 @@ class TestMotor:
     motorController = MotorController()
 
     def __init__(self):
-	self.testVelocity()
-        if self.motorController.getVelocity() is 0.0:
-            self.testVelocity()
-        #else:
-            #raise HardwareException()
+        self.testVelocity()
 
     def testVelocity(self):
         self.motorController.setVelocity(0.0)
         print self.motorController.getVelocity()
-	time.sleep(4.0)
+        time.sleep(4.0)
         self.motorController.setVelocity(10.0)
         print self.motorController.getVelocity()
-        time.sleep(2.0)
-        self.motorController.setVelocity(10.0)
-        print self.motorController.getVelocity()
-        time.sleep(2.0)
-        self.motorController.setVelocity(10.0)
-        print self.motorController.getVelocity()
-        time.sleep(2.0)
-        self.motorController.setVelocity(10.0)
-        print self.motorController.getVelocity()
-        time.sleep(2.0)
-        self.motorController.setVelocity(0.0)
-        print self.motorController.getVelocity()
+        time.sleep(15.0)
+
 
