@@ -37,14 +37,11 @@ class CameraController:
 			################################################
 			cv2.imshow("Frame w/ object detection", self.frame)
 			self.rawCapture.truncate(0)
-			# break and stop streaming if q is pressed
-			if cv2.waitKey(1) & 0xFF == ord('q'):
-				self.stop()
 			################################################	
 
 			if not self.isActive:
 				self.rawCapture.close()
-				self.camera.close()
+				#self.camera.close()
 				return
 
 	def read(self):
