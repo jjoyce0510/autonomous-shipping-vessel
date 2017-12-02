@@ -18,7 +18,7 @@ class ObjectDetector:
 
 	def detectObject(self, frame):
 
-		vertical_img = cv2.flip(frame, 1)
+		vertical_img = cv2.flip(frame, -1 )
 		# blur frame using Gaussian blur
 		blurred_frame = cv2.GaussianBlur(vertical_img, (11, 11), 0)
 
@@ -46,8 +46,8 @@ class ObjectDetector:
 			# only proceed if radius is big enough to avoid error
 			if self.ball_radius > 10:
 				# draw the circle and centroid on the frame
-				cv2.circle(frame, (int(self.ball_x), int(self.ball_y)), int(self.ball_radius), (0, 255, 255), 2)
-				cv2.circle(frame, center, 5, (0, 0, 255), -1)
+				cv2.circle(vertical_img, (int(self.ball_x), int(self.ball_y)), int(self.ball_radius), (0, 255, 255), 2)
+				cv2.circle(vertical_img, center, 5, (0, 0, 255), -1)
 				self.detectObjectWithCenter(center, self.ball_radius)
 
 		else:
@@ -58,7 +58,7 @@ class ObjectDetector:
 		# Decide what to do here.
 		# If object is detected, check the lidar.
 
-		return frame
+		return vertical_img
 
 	def detectObjectWithCenter(self, center, radius):
 		# Check the lidar, create a profile for the object, if it has lidar, we can put distance on it.
