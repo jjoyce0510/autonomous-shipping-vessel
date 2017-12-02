@@ -11,7 +11,7 @@ class Lidar():
         self.address = 0x62
         self.distWriteReg = 0x00
         self.distWriteVal = 0x04
-        self.distReadReg1 = 0x8f # This may not be correct, needs testing.
+        self.distReadReg1 = 0x0f # This may not be correct, needs testing.
         self.distReadReg2 = 0x10
         self.velWriteReg = 0x04
         self.velWriteVal = 0x08

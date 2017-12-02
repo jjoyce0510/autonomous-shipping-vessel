@@ -18,7 +18,7 @@ class ObjectDetector:
 
 	def detectObject(self, frame):
 
-		vertical_img = cv2.flip(frame, 1 )
+		vertical_img = cv2.flip(frame, 1)
 		# blur frame using Gaussian blur
 		blurred_frame = cv2.GaussianBlur(vertical_img, (11, 11), 0)
 
