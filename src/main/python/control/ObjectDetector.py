@@ -16,8 +16,9 @@ class ObjectDetector:
 
     def detectObject(self, frame):
 
+		vertical_img = cv2.flip(frame, 1 )
 		# blur frame using Gaussian blur
-		blurred_frame = cv2.GaussianBlur(frame, (11, 11), 0)
+		blurred_frame = cv2.GaussianBlur(vertical_img, (11, 11), 0)
 
 		# conver the BGR image to HSV space
 		hsv = cv2.cvtColor(blurred_frame, cv2.COLOR_BGR2HSV)
