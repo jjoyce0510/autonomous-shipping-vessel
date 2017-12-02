@@ -16,6 +16,7 @@ class Lidar():
         self.velWriteReg = 0x04
         self.velWriteVal = 0x08
         self.velReadReg = 0x09
+        self.waitReadReg = 0x01
         self.bus = None
 
         if self.connect(self.DEFAULT_BUS) == 0:
@@ -34,7 +35,8 @@ class Lidar():
 
     def writeAndWait(self, register, value):
         self.bus.write_byte_data(self.address, register, value);
-        time.sleep(0.02)
+        while self.bus.read_byte_data(self.address, self.waitReadReg) is not 0:
+            time.sleep(0.01)
 
     def readAndWait(self, register):
         res = self.bus.read_byte_data(self.address, register)
