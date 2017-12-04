@@ -46,8 +46,8 @@ class VesselDriver:
             time.sleep(0.2)
 
     def avoidObject(self, object):
-        print "Angle from center = " + object.getAngleFromCenter()
-        print "Distance from vessel = " + object.getDistance()
+        print "Angle from center = " + str(object.getAngleFromCenter())
+        print "Distance from vessel = " + str(object.getDistance())
 
 
 
