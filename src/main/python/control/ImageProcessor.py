@@ -3,8 +3,8 @@ from Object import Object
 
 class ImageProcessor:
 
-    Lower = (165, 37, 70)
-    Upper = (242, 99, 100)
+    Lower = (165, 20, 40)
+    Upper = (260, 99, 100)
 
     ball_x = None
     ball_y = None
