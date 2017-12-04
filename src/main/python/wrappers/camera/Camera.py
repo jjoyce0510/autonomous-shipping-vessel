@@ -7,7 +7,7 @@ import cv2
 ## Created by Anthony Daegele, Nov. 7 2017
 class CameraController:
 
-	def __init__(self, resolution=(640,480), framerate=24, objectDetector=None):
+	def __init__(self, resolution=(640,480), framerate=24, imageProcessor=None):
 		self.camera = PiCamera()
 		self.camera.resolution = resolution
 		self.camera.framerate = framerate
@@ -18,7 +18,7 @@ class CameraController:
 		self.stream = None
 		self.frame = None
 		self.isActive = False
-		self.object_detector = objectDetector
+		self.imageProcessor = imageProcessor
 
 
 	def start(self):
@@ -31,7 +31,7 @@ class CameraController:
 		# loop until thread is stopped
 
 		for f in self.camera.capture_continuous(self.rawCapture, format="bgr", use_video_port=True):
-			self.frame = self.object_detector.detectObject(f.array)
+			self.frame = self.imageProcessor.detectObjectInFrame(f.array)
 
 			# next few lines should be commented out when deploying boat, they are only for displaying frame
 			################################################
@@ -47,10 +47,9 @@ class CameraController:
 				#self.camera.close()
 				return
 
-	def read(self):
-		# return the most recent frame
-		return self.frame
-
 	def stop(self):
 		# stop the thread
 		self.isActive = False
+
+	def isActive(self):
+		return self.isActive

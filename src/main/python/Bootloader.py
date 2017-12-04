@@ -1,5 +1,6 @@
 # This class serves as the ships 'bootloader', it ensures our devices are working and manages stuff
 import sys
+import time
 from exceptions.HardwareException import HardwareException
 from exceptions.BluetoothException import BluetoothException
 from factories.VesselDriverFactory import VesselDriverFactory
@@ -15,20 +16,21 @@ from src.test.python.TestLidar import TestLidar
 from src.test.python.TestCamera import TestCamera
 
 class Bootloader():
-    #driver = VesselDriverFactory().createInstance()
+    driver = VesselDriverFactory().createInstance()
 
     def __init__(self):
         try:
             self.validate()
+            time.sleep(4)
             pass
         except HardwareException, e:
             print str(e) + "Failed to validate hardware"
             sys.exit(0)
 
-        #self.launchDriver()
+        self.launchDriver()
 
     def validate(self):
-	print "Validating..."
+        print "Validating..."
         self.validateGPS()
         self.validateLidar()
         #self.validateCamera()
@@ -67,7 +69,7 @@ class Bootloader():
             trip.setDestinationCoordinates(coordinates)
             self.driver.setTrip(trip)
             self.driver.drive()
-
+            print "We bouta drive bitch."
 
     def parseCoordinates(self, data):
         if not data:
