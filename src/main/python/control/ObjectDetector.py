@@ -18,7 +18,7 @@ class ObjectDetector:
 		# When no camera object detected, use the lidar.
 
 		# If we already have an obj, means the camera is on.
-		if not self.camera.isActive():
+		if self.camera.isActive() is False:
 			self.camera.start()
 		# Camera is active. Can use fields of object from Camera.
 		else:
