@@ -36,7 +36,7 @@ class Lidar():
     def writeAndWait(self, register, value):
         self.bus.write_byte_data(self.address, register, value);
         #while self.bus.read_byte_data(self.address, self.waitReadReg) is not 0:
-        time.sleep(0.04)
+        time.sleep(0.02)
 
     def readAndWait(self, register):
         res = self.bus.read_byte_data(self.address, register)

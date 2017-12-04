@@ -1,70 +1,52 @@
 import cv2
+from Object import Object
 
 class ObjectDetector:
 	lidar = None
+	detectedObject = Object() # Update this object
 
-	Lower = (20, 80, 5)
-	Upper = (80, 255, 185)
-
-	ball_x = None
-	ball_y = None
-	ball_radius = None
-
-	detectedObject = None
-
-	def __init__(self, lidar=None):
+	def __init__(self, camera=None, lidar=None, imageProc=None):
 		self.lidar = lidar
-        
+		self.camera = camera
+		self.imageProc = imageProc
 
-	def detectObject(self, frame):
+	def detectObject(self):
+		distanceToNearestObject = self.lidar.getDistance()
+		# If at any moment the distance to the nearest obj is less than a certain amount, go for it.
 
-		vertical_img = cv2.flip(frame, -1 )
-		# blur frame using Gaussian blur
-		blurred_frame = cv2.GaussianBlur(vertical_img, (11, 11), 0)
+		# Prioritize the camera stream. Distance, unless extremely close, doesn't matter too much.
+		# When no camera object detected, use the lidar.
 
-		# conver the BGR image to HSV space
-		hsv = cv2.cvtColor(blurred_frame, cv2.COLOR_BGR2HSV)
-
-		# construct a mask for the color green, perform a series of dilations and erosions
-		# to remove any small blobs left in the image
-		mask = cv2.inRange(hsv, self.Lower, self.Upper)
-		mask = cv2.erode(mask, None, iterations=2)
-		mask = cv2.dilate(mask, None, iterations=2)
-
-		# find the contours in the mask and initialize the current (x, y) center of the ball
-		contours = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[-2]
-
-		# only proceed if there are more than one contours
-		if len(contours)>0:
-			# find the largest contour in the mask, then use it to compute the minimum enclosing circle and centroid
-			c = max(contours, key=cv2.contourArea)
-			# x, y, and radius can be accessed in order to determine how to navigate around objects
-			((self.ball_x, self.ball_y), self.ball_radius) = cv2.minEnclosingCircle(c)
-			M = cv2.moments(c)
-			center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
-
-			# only proceed if radius is big enough to avoid error
-			if self.ball_radius > 10:
-				# draw the circle and centroid on the frame
-				cv2.circle(vertical_img, (int(self.ball_x), int(self.ball_y)), int(self.ball_radius), (0, 255, 255), 2)
-				cv2.circle(vertical_img, center, 5, (0, 0, 255), -1)
-				self.detectObjectWithCenter(center, self.ball_radius)
-
+		# If we already have an obj, means the camera is on.
+		if not self.camera.isActive():
+			self.camera.start()
+		# Camera is active. Can use fields of object from Camera.
 		else:
-			self.ball_x = None
-			self.ball_y = None
-			self.ball_radius = None
+			# This means that there is object detected on the camera.
+			if self.imageProc.hasDetectedObjectInImage():
+				self.detectedObject.setAngleFromCenter(self.imageProc.getObjectAngleFromCenter())
+				self.detectedObject.setDiameterProportion(self.imageProc.getDiameterAsProportionOfCamerView())
 
-		# Decide what to do here.
-		# If object is detected, check the lidar.
+				proportionOfView = self.detectedObject.getDiameterProportion()
 
-		return vertical_img
+				# Determine if the distance is representative.
+				if abs(self.detectedObject.getAngleFromCenter()) > self.imageProc.getHorizFieldOfView() * proportionOfView:
+					# We don't think its presentation.
+					self.detectedObject.setDistance(None)
+				else:
+					# Center
+					self.detectedObject.setDistance(distanceToNearestObject)
 
-	def detectObjectWithCenter(self, center, radius):
-		# Check the lidar, create a profile for the object, if it has lidar, we can put distance on it.
-		# Set as global variable and allow the driver to request if there are any objects.
-		pass
+			# Nothing detected on camera, must resort to lidar.
+			else:
+				if distanceToNearestObject < 200:
+					# Object less than a meter, no object detected on camera.
+					self.detectedObject.setDistance(distanceToNearestObject)
+				else:
+					self.detectedObject.setDistance(None)
 
-	def getObject(self):
+				self.detectedObject.setAngleFromCenter(None)
+				self.detectedObject.setDiameterProportion(None)
+
 		return self.detectedObject
 
