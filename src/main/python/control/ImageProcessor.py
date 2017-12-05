@@ -16,7 +16,7 @@ class ImageProcessor:
     degreesPerPixel = horizFieldOfView / cameraWidth
 
     objPixelWidth = 0.0
-    diameterAsProportionOfCameraView = 0.0
+    radAsProportion = 0.0
     objCenter = None
 
     objectAngleFromCenter = 0.0
@@ -79,7 +79,7 @@ class ImageProcessor:
 
         self.objPixelWidth = 2*radius
         self.objCenter = center
-        self.diameterAsProportion = 2*radius/self.cameraWidth
+        self.radAsProportion = radius/self.cameraWidth
 
         ## Somehow want to convey the angle, or where the object is with relation to the camera.
         ## We can do this. use the center of the object.
@@ -103,8 +103,8 @@ class ImageProcessor:
     def hasDetectedObjectInImage(self):
         return self.hasDetectedImageObject
 
-    def getDiameterAsProportionOfCameraView(self):
-        return self.diameterAsProportionOfCameraView
+    def getRadiusAsProportionOfCameraView(self):
+        return self.radAsProportion
 
     def getHorizFieldOfView(self):
         return self.horizFieldOfView

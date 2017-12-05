@@ -25,9 +25,9 @@ class ObjectDetector:
 			# This means that there is object detected on the camera.
 			if self.imageProc.hasDetectedObjectInImage():
 				self.detectedObject.setAngleFromCenter(self.imageProc.getObjectAngleFromCenter())
-				self.detectedObject.setDiameterProportion(self.imageProc.getDiameterAsProportionOfCameraView())
+				self.detectedObject.setRadiusProportion(self.imageProc.getDiameterAsProportionOfCameraView())
 
-				proportionOfView = self.detectedObject.getDiameterProportion()
+				proportionOfView = self.detectedObject.getRadiusProportion()
 
 				# Determine if the distance is representative.
 				if abs(self.detectedObject.getAngleFromCenter()) > self.imageProc.getHorizFieldOfView() * proportionOfView:
@@ -46,7 +46,7 @@ class ObjectDetector:
 					self.detectedObject.setDistance(None)
 
 				self.detectedObject.setAngleFromCenter(None)
-				self.detectedObject.setDiameterProportion(None)
+				self.detectedObject.setRadiusProportion(None)
 
 		return self.detectedObject
 
