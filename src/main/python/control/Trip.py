@@ -19,13 +19,13 @@ class Trip:
 
     def calculateAngleToDestination(self, currentCoordinates):
         # Calculate the relative angle to get to the destination coordinates (Direction that we need to travel)
-	return self.currentCoordinates.calculateAngleTo(self.destinationCoordinates)
+	return self.currentCoordinates.calculateAngleFrom(self.destinationCoordinates)
         
     def calculateRotationToDestination(self, currentCoordinates, currentOrientation):
 	# Calculate rotation in degrees of boat from current orientation to desired orientation
 	#     (+) is clockwise rotation
 	#     (-) is counter-clockwise rotation
-	angleToDestination = self.currentCoordinates.calculateAngleTo(self.destinationCoordinates)
+	angleToDestination = self.currentCoordinates.calculateAngleFrom(self.destinationCoordinates)
 	return self.destinationCoordinates.calculateRotation(currentOrientation, angleToDestination)
 
     def rotationToDestination(self):
