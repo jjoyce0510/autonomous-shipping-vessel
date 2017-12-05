@@ -11,8 +11,8 @@ class ImageProcessor:
     ball_radius = None
 
     horizFieldOfView = 62.2
-    cameraWidth = 640
-    cameraHeight = 480
+    cameraWidth = 1296
+    cameraHeight = 736
     degreesPerPixel = horizFieldOfView / cameraWidth
 
     objPixelWidth = 0.0
@@ -27,8 +27,6 @@ class ImageProcessor:
         pass
 
     def detectObjectInFrame(self, frame):
-
-        self.hasDetectedImageObject = False
         vertical_img = cv2.flip(frame, -1 )
         # blur frame using Gaussian blur
         blurred_frame = cv2.GaussianBlur(vertical_img, (11, 11), 0)
@@ -65,6 +63,8 @@ class ImageProcessor:
             self.ball_x = None
             self.ball_y = None
             self.ball_radius = None
+            self.hasDetectedImageObject = True
+
 
         # Decide what to do here.
         # If object is detected, check the lidar.
