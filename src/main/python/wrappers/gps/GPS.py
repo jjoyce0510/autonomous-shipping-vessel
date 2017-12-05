@@ -28,7 +28,7 @@ class GPS:
 		for report in self.gpsd:
 			if report['class'] == 'TPV':
 				if hasattr(report, 'track'):
-					return report.track
+					return float(report.track)
 				else:
 					return ""
 
