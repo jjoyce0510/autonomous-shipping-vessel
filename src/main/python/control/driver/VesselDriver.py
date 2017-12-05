@@ -42,8 +42,7 @@ class VesselDriver:
             if obj.isValid():
                 self.avoidObject(obj)
             else:
-
-                current_heading = self.trip.gps.getHeading()
+                '''current_heading = self.trip.gps.getHeading()
                 print "Current heading: " + str(current_heading)
                 print "Rotation to dest: " + str(self.trip.rotationToDestination())
                 # Move in direction toward completion of trip
@@ -51,12 +50,11 @@ class VesselDriver:
                 trip_dist = self.trip.distanceToDestination()
                 print " Trip dist " + str(trip_dist)
 
-
-
                 if abs(trip_dist) < STOP_DIST:
                     self.vesselControls.setVelocity(0.0)
                 else:
-                    self.vesselControls.setVelocity(20.0)
+                    self.vesselControls.setVelocity(20.0)'''
+                self.vesselControls.setAngle(0.0)
 
             # Run every .2 seconds.
             time.sleep(0.2)
@@ -64,7 +62,12 @@ class VesselDriver:
     def avoidObject(self, object):
         print "Angle from center = " + str(object.getAngleFromCenter())
         print "Distance from vessel = " + str(object.getDistance())
-        self.vesselControls.setAngle(self.turningState * self.calculateTurnAngle(object))
+
+        if object.getAngleFromCenter() is not None:
+            self.vesselControls.setAngle(self.turningState * self.calculateTurnAngle(object))
+        else:
+            # Only lidar reading
+            pass
 
     def calculateTurnAngle(self, object):
         angle = object.getAngleFromCenter()
@@ -79,7 +82,7 @@ class VesselDriver:
 
 
     def mapRadiusToServoAngle(self, radius):
-        scaledRadius = 1 if radius > 0.50 else radius*2
+        scaledRadius = 1 if radius > 0.50 else radius * 2
         return math.sqrt(scaledRadius) * self.vesselControls.servo.MAX_ANGLE_VALUE
 
 
