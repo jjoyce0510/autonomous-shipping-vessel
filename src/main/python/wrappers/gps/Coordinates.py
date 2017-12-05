@@ -4,8 +4,8 @@ import math
 class Coordinates:
 
 	def __init__(self, lat, lon):
-		self.lat = lat
-		self.lon = lon
+		self.lat = float(lat)
+		self.lon = float(lon)
 
 	def getLat(self):
 		return self.lat
@@ -14,10 +14,10 @@ class Coordinates:
 		return self.lon
 	
 	def setLat(self, latitude):
-		self.lat  = latitude
+		self.lat  = float(latitude)
 	
 	def setLon(self, longitude):
-		self.lon = longitude
+		self.lon = float(longitude)
 
 	def calculateDistanceTo(self, coordinates):
 		# Calculate distance to another set of coordinates
