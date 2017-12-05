@@ -44,10 +44,11 @@ class VesselDriver:
                 # Move in direction toward completion of trip
                 self.vesselControls.setAngle(30*self.trip.rotationToDestination()/180)
                 trip_dist = self.trip.distanceToDestination()
-                if trip_dist < STOP_DIST:
-                	self.vesselControls.setVelocity(0)
+                print " Trip dist " + trip_dist
+                if abs(trip_dist) < STOP_DIST:
+                	self.vesselControls.setVelocity(0.0)
                 else:
-                	self.vesselControls.setVelocity(30)
+                	self.vesselControls.setVelocity(30.0)
 
             # Run every .2 seconds.
             time.sleep(0.2)
