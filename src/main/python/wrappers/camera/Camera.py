@@ -35,7 +35,7 @@ class CameraController:
 
 			# next few lines should be commented out when deploying boat, they are only for displaying frame
 			################################################
-			#cv2.imshow("Frame w/ object detection", self.frame)
+			cv2.imshow("Frame w/ object detection", self.frame)
 			self.rawCapture.truncate(0)
 			# break and stop streaming if q is pressed
 			if cv2.waitKey(1) & 0xFF == ord('q'):
