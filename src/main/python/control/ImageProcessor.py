@@ -41,7 +41,7 @@ class ImageProcessor:
         mask = cv2.inRange(hsv, self.Lower, self.Upper)
         mask = cv2.erode(mask, None, iterations=2)
         mask = cv2.dilate(mask, None, iterations=2)
-
+        cv2.imshow("Frame w/ object detection", mask)
         # find the contours in the mask and initialize the current (x, y) center of the ball
         contours = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[-2]
 
