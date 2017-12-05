@@ -55,7 +55,7 @@ class VesselDriver:
                 if abs(trip_dist) < STOP_DIST:
                     self.vesselControls.setVelocity(0.0)
                 else:
-                    self.vesselControls.setVelocity(30.0)
+                    self.vesselControls.setVelocity(20.0)
 
             # Run every .2 seconds.
             time.sleep(0.2)
