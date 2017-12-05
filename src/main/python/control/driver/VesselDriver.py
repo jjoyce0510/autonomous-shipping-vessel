@@ -2,6 +2,9 @@ from ..TripState import TripState
 import time
 from TurningState import TurningState
 
+TRIP_TIME = 10 # arbitrary number for now
+STOP_DIST = 0.5
+
 # Singleton class to represent the driver, who is able to check the sensors and make decisions. USE GETINSTANCE
 class VesselDriver:
     trip = None
@@ -39,8 +42,13 @@ class VesselDriver:
             if obj.isValid():
                 self.avoidObject(obj)
             else:
-                # Move in direction toward completion of trip. #TODO HERE IS WILL.
-                pass
+                # Move in direction toward completion of trip
+                self.vesselControls.setAngle(self.vesselControls.getCurrentAngle()+self.trip.rotationToDestination())
+                trip_dist = self.trip.distanceToDestination()
+                if trip_dist < STOP_DIST:
+                	self.vesselControls.setVelocity(0)
+                else:
+                	self.vesselControls.setVelocity(trip_dist/TRIP_TIME)
 
             # Run every .2 seconds.
             time.sleep(0.2)
