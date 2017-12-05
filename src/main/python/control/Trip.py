@@ -19,20 +19,20 @@ class Trip:
 
     def calculateAngleToDestination(self, currentCoordinates):
         # Calculate the relative angle to get to the destination coordinates (Direction that we need to travel)
-	return currentCoordinates.calculateAngleFrom(self.destinationCoordinates)
+        return currentCoordinates.calculateAngleFrom(self.destinationCoordinates)
         
     def calculateRotationToDestination(self, currentCoordinates, currentOrientation):
-	# Calculate rotation in degrees of boat from current orientation to desired orientation
-	#     (+) is clockwise rotation
-	#     (-) is counter-clockwise rotation
-	angleToDestination = currentCoordinates.calculateAngleFrom(self.destinationCoordinates)
-	return self.destinationCoordinates.calculateRotation(currentOrientation, angleToDestination)
+        # Calculate rotation in degrees of boat from current orientation to desired orientation
+        #     (+) is clockwise rotation
+        #     (-) is counter-clockwise rotation
+        angleToDestination = currentCoordinates.calculateAngleFrom(self.destinationCoordinates)
+        return self.destinationCoordinates.calculateRotation(currentOrientation, angleToDestination)
 
     def rotationToDestination(self):
-    	return self.calculateRotationToDestination(self.gps.getCoord(), self.gps.getHeading())
+        return self.calculateRotationToDestination(self.gps.getCoord(), self.gps.getHeading())
     
     def distanceToDestination(self):
-    	return self.calculateDistanceToDestination(self.gps.getCoord())
+        return self.calculateDistanceToDestination(self.gps.getCoord())
 
     def getDuration(self):
         if self.startTime is not None:
