@@ -61,8 +61,20 @@ class VesselDriver:
             time.sleep(0.2)
 
     def avoidObject(self, object):
+
+        turn_angle = self.calculateTurnAngle(object)
+
         print "Angle from center = " + str(object.getAngleFromCenter())
         print "Distance from vessel = " + str(object.getDistance())
+
+
+    def calculateTurnAngle(self, object):
+        angle = object.getAngleFromCenter()
+        radius = object.getRadiusProportion()
+        print "Radius Proportion of screen" + str(radius)
+
+        self.turningState = TurningState.TURNING_LEFT if (angle > 0) else TurningState.TURNING_RIGHT
+
 
 
 

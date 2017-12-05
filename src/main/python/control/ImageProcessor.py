@@ -63,7 +63,7 @@ class ImageProcessor:
             self.ball_x = None
             self.ball_y = None
             self.ball_radius = None
-            self.hasDetectedImageObject = False 
+            self.hasDetectedImageObject = False
 
 
         # Decide what to do here.
