@@ -5,6 +5,9 @@ from Coordinates import Coordinates
 PORT = 2947
 
 # Created by Will Markley on November 8, 2017
+# Sources:
+#     https://learn.adafruit.com/adafruit-ultimate-gps-on-the-raspberry-pi?view=all
+#     http://www.catb.org/gpsd//gpsd_json.html
 class GPS:
 
 	def __init__(self):

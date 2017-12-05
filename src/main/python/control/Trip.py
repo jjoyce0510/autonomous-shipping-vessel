@@ -27,7 +27,13 @@ class Trip:
 	#     (-) is counter-clockwise rotation
 	angleToDestination = self.currentCoordinates.calculateAngleTo(self.destinationCoordinates)
 	return self.destinationCoordinates.calculateRotation(currentOrientation, angleToDestination)
-        
+
+    def rotationToDestination(self):
+    	return self.calculateRotationToDestination(self.gps.getCoord(), self.gps.getHeading())
+    
+    def distanceToDestination(self):
+    	return self.calculateDistanceToDestination(self.gps.getCoord())
+
     def getDuration(self):
         if self.startTime is not None:
             return time.clock() - self.startTime
