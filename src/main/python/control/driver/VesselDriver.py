@@ -1,5 +1,6 @@
 from ..TripState import TripState
 import time
+import math
 from TurningState import TurningState
 
 STOP_DIST = 0.000009
@@ -46,7 +47,7 @@ class VesselDriver:
                 print "Current heading: " + str(current_heading)
                 print "Rotation to dest: " + str(self.trip.rotationToDestination())
                 # Move in direction toward completion of trip
-                self.vesselControls.setAngle(30*self.trip.rotationToDestination()/180)
+                self.vesselControls.setAngle(self.vesselControls.servo.MAX_ANGLE_VALUE*self.trip.rotationToDestination()/180)
                 trip_dist = self.trip.distanceToDestination()
                 print " Trip dist " + str(trip_dist)
 
@@ -61,20 +62,25 @@ class VesselDriver:
             time.sleep(0.2)
 
     def avoidObject(self, object):
-
-        turn_angle = self.calculateTurnAngle(object)
-
         print "Angle from center = " + str(object.getAngleFromCenter())
         print "Distance from vessel = " + str(object.getDistance())
-
+        self.vesselControls.setAngle(self.turningState * self.calculateTurnAngle(object))
 
     def calculateTurnAngle(self, object):
         angle = object.getAngleFromCenter()
         radius = object.getRadiusProportion()
         print "Radius Proportion of screen" + str(radius)
 
+
         self.turningState = TurningState.TURNING_LEFT if (angle > 0) else TurningState.TURNING_RIGHT
 
+        return self.mapRadiusToServoAngle(radius)
+
+
+
+    def mapRadiusToServoAngle(self, radius):
+        scaledRadius = 1 if radius > 0.50 else radius*2
+        return math.sqrt(scaledRadius) * self.vesselControls.servo.MAX_ANGLE_VALUE
 
 
 

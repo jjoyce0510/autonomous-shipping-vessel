@@ -1,5 +1,5 @@
 
 class TurningState:
-    NOT_TURNING = 1
-    TURNING_RIGHT = 2
-    TURNING_LEFT = 3
+    NOT_TURNING = 0
+    TURNING_RIGHT = -1
+    TURNING_LEFT = 1
