@@ -7,7 +7,7 @@ from threading import Thread
 class MotorController:
     MOTOR_PIN = 4
     MIN_PULSE_VALUE = 800
-    MAX_PULSE_VALUE = 1800
+    MAX_PULSE_VALUE = 1500
     MIN_VELOCITY = 0.0
     MAX_VELOCITY = 100.0
 
