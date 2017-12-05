@@ -108,6 +108,12 @@ class TestCoordinates:
 			return False
 		if self.coord_0.calculateRotation(180, 0) != -180:
 			return False
+		if self.coord_0.calculateRotation(315, -10) != 35:
+			return False
+		if self.coord_0.calculateRotation(315, 45) != 90:
+			return False
+		if self.coord_0.calculateRotation(315, -90) != -45:
+			return False
 		return True
 
 
