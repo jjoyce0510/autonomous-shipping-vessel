@@ -25,7 +25,7 @@ class ObjectDetector:
 			# This means that there is object detected on the camera.
 			if self.imageProc.hasDetectedObjectInImage():
 				self.detectedObject.setAngleFromCenter(self.imageProc.getObjectAngleFromCenter())
-				self.detectedObject.setRadiusProportion(self.imageProc.getDiameterAsProportionOfCameraView())
+				self.detectedObject.setRadiusProportion(self.imageProc.getRadiusAsProportionOfCameraView())
 
 				proportionOfView = self.detectedObject.getRadiusProportion()
 
