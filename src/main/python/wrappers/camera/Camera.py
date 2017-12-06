@@ -19,12 +19,14 @@ class CameraController:
 		self.frame = None
 		self.isActive = False
 		self.imageProcessor = imageProcessor
+		self.camThread = None
 
 
 	def start(self):
 		# start the thread and read frames from the video stream
 		self.isActive = True
-		Thread(target=self.update).start()
+		self.camThread = Thread(target=self.update)
+		self.camThread.start()
 
 
 	def update(self):
@@ -50,6 +52,7 @@ class CameraController:
 	def stop(self):
 		# stop the thread
 		self.isActive = False
+		self.camThread.join(0.1)
 
 	def isActive(self):
 		return self.isActive
