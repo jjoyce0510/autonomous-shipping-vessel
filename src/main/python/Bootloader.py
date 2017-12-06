@@ -70,7 +70,6 @@ class Bootloader():
             trip.setDestinationCoordinates(coordinates)
             self.driver.setTrip(trip)
             self.driver.drive()
-            print "We bouta drive bitch."
 
     def parseCoordinates(self, data):
         if not data:
