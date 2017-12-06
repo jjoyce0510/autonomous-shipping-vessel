@@ -30,7 +30,6 @@ class VesselDriver:
             # Start drive loop
             self.trip.startTrip()
             self.vesselControls.startMotor()
-            self.vesselControls.setVelocity(15.0)
             self.beginMonitoring()
 
     def beginMonitoring(self):
