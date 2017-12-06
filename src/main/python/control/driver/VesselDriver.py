@@ -30,7 +30,7 @@ class VesselDriver:
             # Start drive loop
             self.trip.startTrip()
             self.vesselControls.startMotor()
-            self.vesselControls.setVelocity(20.0)
+            self.vesselControls.setVelocity(30.0)
             self.beginMonitoring()
 
     def beginMonitoring(self):
@@ -51,7 +51,7 @@ class VesselDriver:
                     self.vesselControls.setVelocity(0.0)
                     print "Arrived at destination."
                 else:
-                    self.vesselControls.setVelocity(20.0)
+                    self.vesselControls.setVelocity(30.0)
 
             # Run every .2 seconds.
             time.sleep(0.2)
@@ -64,7 +64,7 @@ class VesselDriver:
             self.vesselControls.setAngle(self.turningState * self.calculateTurnAngle(object))
         else:
             # Only lidar reading
-            self.vesselControls.setVelocity(15.0)
+            self.vesselControls.setVelocity(25.0)
             self.vesselControls.setAngle(self.vesselControls.servo.MAX_ANGLE_VALUE)
 
     def calculateTurnAngle(self, object):
