@@ -61,6 +61,7 @@ class MotorController:
 
     def sendPWM(self):
         while self.isActive:
+            print "sending pulse " + str(self.currentPWM)
             self.pi.set_servo_pulsewidth(self.MOTOR_PIN, self.currentPWM)
             time.sleep(2)
 
