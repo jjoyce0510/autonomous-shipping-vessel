@@ -30,6 +30,7 @@ class VesselDriver:
             # Start drive loop
             self.trip.startTrip()
             self.vesselControls.startMotor()
+            self.vesselControls.setVelocity(20.0)
             self.beginMonitoring()
 
     def beginMonitoring(self):
@@ -48,6 +49,7 @@ class VesselDriver:
 
                 if abs(trip_dist) < STOP_DIST:
                     self.vesselControls.setVelocity(0.0)
+                    print "Arrived at destination."
                 else:
                     self.vesselControls.setVelocity(20.0)
 
@@ -70,9 +72,7 @@ class VesselDriver:
         radius = object.getRadiusProportion()
         print "Radius Proportion of screen" + str(radius)
 
-
         self.turningState = TurningState.TURNING_LEFT if (angle > 0) else TurningState.TURNING_RIGHT
-
         return self.mapRadiusToServoAngle(radius)
 
 
