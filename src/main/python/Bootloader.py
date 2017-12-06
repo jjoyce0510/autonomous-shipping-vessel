@@ -31,7 +31,7 @@ class Bootloader():
 
     def validate(self):
         print "Validating..."
-        #self.validateGPS()
+        self.validateGPS()
         self.validateLidar()
         #self.validateCamera()
         self.validateMotor()
