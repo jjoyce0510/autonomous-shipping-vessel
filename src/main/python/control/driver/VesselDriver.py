@@ -66,7 +66,7 @@ class VesselDriver:
             self.vesselControls.setAngle(self.turningState * self.calculateTurnAngle(object))
         else:
             # Only lidar reading
-            self.vesselControls.setVelocity(20.0)
+            self.vesselControls.setVelocity(15.0)
             self.vesselControls.setAngle(self.vesselControls.servo.MAX_ANGLE_VALUE)
 
     def calculateTurnAngle(self, object):

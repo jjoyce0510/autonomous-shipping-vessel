@@ -4,4 +4,8 @@ sudo systemctl disable gpsd.socket
 sudo pigpiod
 sudo gpsd /dev/ttyUSB0 -F /var/run/gpsd.sock
 cd /home/pi/autonomous-shipping-vessel
-python -m src.main.python.Main
+
+until python -m src.main.python.Main
+do
+    sleep 30
+done
