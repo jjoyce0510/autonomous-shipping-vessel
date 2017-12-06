@@ -9,8 +9,9 @@ touch boot.log
 echo "Start 1 try" >> boot.log
 python -m src.main.python.Main >> boot.log
 echo "Completed 1 try" >> boot.log
-until python -m src.main.python.Main >> boot.log
-do
-    sleep 0.1
-    echo "=========================================" >> boot.log
-done
+exit 1
+#until python -m src.main.python.Main >> boot.log
+#do
+#    sleep 0.1
+#    echo "=========================================" >> boot.log
+#done
