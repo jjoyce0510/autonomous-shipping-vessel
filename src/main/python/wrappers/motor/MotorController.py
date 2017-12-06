@@ -19,6 +19,7 @@ class MotorController:
         self.setVelocity(0.0)
         self.isActive = True
         Thread(target=self.sendPWM).start()
+        time.sleep(4.0)
 
     def stop(self):
         self.setVelocity(0.0)
