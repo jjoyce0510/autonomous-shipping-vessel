@@ -25,6 +25,7 @@ class MotorController:
         self.isActive = False
 
     def setVelocity(self, velocity):
+        print "new velocity = " + str(velocity)
         pulseWidth = self.translateVelocityToPulseWidth(velocity) + self.MIN_PULSE_VALUE
         if self.isInPWMRange(pulseWidth):
             self.currentVelocity = velocity
