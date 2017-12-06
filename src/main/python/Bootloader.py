@@ -26,7 +26,7 @@ class Bootloader():
             pass
         except HardwareException, e:
             print str(e) + " Failed to validate hardware."
-            os._exit(1)
+            sys.exit(1)
 
         self.launchDriver()
 

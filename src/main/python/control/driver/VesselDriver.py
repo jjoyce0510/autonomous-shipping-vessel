@@ -38,6 +38,7 @@ class VesselDriver:
 
     def beginMonitoring(self):
         while self.trip.getState() is TripState.active:
+            self.vesselControls.startMotor()
             obj = self.getClosestObject()
             if obj.isValid():
                 self.avoidObject(obj)

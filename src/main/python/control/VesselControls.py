@@ -5,7 +5,6 @@ class VesselControls:
 
     def __init__(self, motor, servo):
         self.motor = motor
-        self.startMotor()
         self.servo = servo
 
     def getCurrentVelocity(self):
