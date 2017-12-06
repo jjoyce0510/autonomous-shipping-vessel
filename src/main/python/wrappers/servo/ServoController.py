@@ -6,7 +6,7 @@ import pigpio
 class ServoController:
     SERVO_PIN = 17
     MIN_PULSE_VALUE = 600
-    MAX_PULSE_VALUE = 2200
+    MAX_PULSE_VALUE = 2100
     MIN_ANGLE_VALUE = -30.0
     MAX_ANGLE_VALUE = 30.0
 
