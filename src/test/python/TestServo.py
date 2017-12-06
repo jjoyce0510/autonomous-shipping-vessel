@@ -6,6 +6,7 @@ class TestServo:
     servoController = ServoController()
 
     def __init__(self):
+	print "running"
         if self.servoController.getAngle() == 0.0:
             self.testAngle()
         else:
