@@ -14,7 +14,7 @@ class VesselControls:
         return self.servo.getAngle()
 
     def setVelocity(self, velocity):
-        if self.motor.getVelocity is not velocity:
+        if self.motor.getVelocity() is not velocity:
             self.motor.setVelocity(velocity)
 
     def setAngle(self, angle):

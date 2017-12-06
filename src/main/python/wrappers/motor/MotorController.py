@@ -63,7 +63,7 @@ class MotorController:
         while self.isActive:
             print "sending pulse " + str(self.currentPWM)
             self.pi.set_servo_pulsewidth(self.MOTOR_PIN, self.currentPWM)
-            time.sleep(2)
+            time.sleep(1)
 
     def isInPWMRange(self, pulseWidth):
         return pulseWidth >= self.MIN_PULSE_VALUE and pulseWidth <= self.MAX_PULSE_VALUE
