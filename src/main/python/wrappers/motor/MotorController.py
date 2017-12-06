@@ -14,15 +14,18 @@ class MotorController:
     def __init__(self):
         self.pi = pigpio.pi()
         self.isActive = False
+        self.motorThread = None
 
     def start(self):
         self.setVelocity(0.0)
         self.isActive = True
-        Thread(target=self.sendPWM).start()
+        self.motorThread = Thread(target=self.sendPWM)
+        self.motorThread.start()
 
     def stop(self):
         self.setVelocity(0.0)
         self.isActive = False
+        self.motorThread.join(0.1)
 
     def setVelocity(self, velocity):
         pulseWidth = self.translateVelocityToPulseWidth(velocity) + self.MIN_PULSE_VALUE
