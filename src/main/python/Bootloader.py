@@ -1,7 +1,6 @@
 # This class serves as the ships 'bootloader', it ensures our devices are working and manages stuff
 import sys
 import time
-import os
 from exceptions.HardwareException import HardwareException
 from exceptions.BluetoothException import BluetoothException
 from factories.VesselDriverFactory import VesselDriverFactory
@@ -70,6 +69,7 @@ class Bootloader():
             trip.setDestinationCoordinates(coordinates)
             self.driver.setTrip(trip)
             self.driver.drive()
+            print "We bouta drive bitch."
 
     def parseCoordinates(self, data):
         if not data:

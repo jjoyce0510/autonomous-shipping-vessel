@@ -25,11 +25,15 @@ class VesselDriver:
         # Find and get closest obstacle
         return self.objectDetector.detectObject()
 
+    # Probably want to multi thread here.
     def drive(self):
+        # Drive the ship!, check for trip status, etc.
+        # 1. Calculate, check for objects, determine direction to move
+        # 2. Tell controllers how to move that way
+        # 3. We're moving!
         if self.trip is not None and self.trip.getState() is TripState.pending:
             # Start drive loop
             self.trip.startTrip()
-            self.vesselControls.startMotor()
             self.beginMonitoring()
 
     def beginMonitoring(self):
