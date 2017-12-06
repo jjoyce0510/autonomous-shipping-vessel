@@ -26,10 +26,7 @@ class Bootloader():
             pass
         except HardwareException, e:
             print str(e) + " Failed to validate hardware."
-            for t in threading.enumerate():
-                if t is not threading.currentThread():
-                    t.join(0.1)
-            sys.exit(1)
+            os._exit(1)
 
         self.launchDriver()
 
