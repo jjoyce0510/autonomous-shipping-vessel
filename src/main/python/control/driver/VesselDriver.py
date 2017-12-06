@@ -34,11 +34,11 @@ class VesselDriver:
         if self.trip is not None and self.trip.getState() is TripState.pending:
             # Start drive loop
             self.trip.startTrip()
+            self.vesselControls.startMotor()
             self.beginMonitoring()
 
     def beginMonitoring(self):
         while self.trip.getState() is TripState.active:
-            self.vesselControls.startMotor()
             obj = self.getClosestObject()
             if obj.isValid():
                 self.avoidObject(obj)
