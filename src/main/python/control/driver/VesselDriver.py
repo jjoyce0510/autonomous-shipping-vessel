@@ -39,7 +39,8 @@ class VesselDriver:
             if obj.isValid():
                 self.avoidObject(obj)
             else:
-                current_heading = self.trip.gps.getHeading()
+                pass
+                '''current_heading = self.trip.gps.getHeading()
                 print "Current heading: " + str(current_heading)
                 print "Rotation to dest: " + str(self.trip.rotationToDestination())
                 # Move in direction toward completion of trip
@@ -52,9 +53,10 @@ class VesselDriver:
                     print "Arrived at destination."
                 else:
                     self.vesselControls.setVelocity(30.0)
+                    '''
 
             # Run every .2 seconds.
-            time.sleep(0.2)
+            time.sleep(0.1)
 
     def avoidObject(self, object):
         print "Angle from center = " + str(object.getAngleFromCenter())
