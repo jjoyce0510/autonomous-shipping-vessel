@@ -54,7 +54,7 @@ class VesselDriver:
                 else:
                     self.vesselControls.setVelocity(30.0)
                     '''
-                self.vesselControls.setAngle(0.0) # No object, just move straight.
+                #self.vesselControls.setAngle(0.0) # No object, just move straight.
                 self.turningState = TurningState.NOT_TURNING
 
             # Run every .2 seconds.
