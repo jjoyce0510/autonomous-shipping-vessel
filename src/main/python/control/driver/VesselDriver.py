@@ -54,6 +54,8 @@ class VesselDriver:
                 else:
                     self.vesselControls.setVelocity(30.0)
                     '''
+                self.vesselControls.setAngle(0.0) # No object, just move straight.
+                self.turningState = TurningState.NOT_TURNING
 
             # Run every .2 seconds.
             time.sleep(0.1)
@@ -66,7 +68,7 @@ class VesselDriver:
             self.vesselControls.setAngle(self.turningState * self.calculateTurnAngle(object))
         else:
             # Only lidar reading
-            self.vesselControls.setVelocity(30.0)
+            self.vesselControls.setVelocity(25.0)
             self.vesselControls.setAngle(self.vesselControls.servo.MAX_ANGLE_VALUE)
 
     def calculateTurnAngle(self, object):
